@@ -45,8 +45,8 @@ class PythonInterface:
         self.Desc = "Basic implementation of autopilot in python. Use and modify as you wish."
                 
 		self.DrawWindowCB = self.DrawWindowCallback
-        self.KeyCB = self.KeyCallback
-        self.MouseClickCB = self.MouseClickCallback
+		self.KeyCB = self.KeyCallback
+		self.MouseClickCB = self.MouseClickCallback
 		self.WindowId = XPLMCreateWindow(self, 50, 600, 300, 400, 1, self.DrawWindowCB, self.KeyCB, self.MouseClickCB, 0)
         
         #----------------
@@ -77,7 +77,7 @@ class PythonInterface:
         self.rudd12DefDR = XPLMFindDataRef("sim/flightmodel/controls/vstab1_rud2def")
         self.rudd21DefDR = XPLMFindDataRef("sim/flightmodel/controls/vstab2_rud1def")
         self.rudd22DefDR = XPLMFindDataRef("sim/flightmodel/controls/vstab2_rud2def")
-                                                 
+        
         self.autopilotOnDR = XPLMFindDataRef("sim/cockpit/autopilot/autopilot_mode")
         self.FDPitchDR = XPLMFindDataRef("sim/cockpit/autopilot/flight_director_pitch")
         self.FDRollDR = XPLMFindDataRef("sim/cockpit/autopilot/flight_director_roll")
@@ -85,11 +85,11 @@ class PythonInterface:
         self.planeRollDR = XPLMFindDataRef("sim/cockpit2/gauges/indicators/roll_electric_deg_pilot")
         self.planeSlipDR = XPLMFindDataRef("sim/cockpit2/gauges/indicators/slip_deg")
         self.planeBetaDR = XPLMFindDataRef("sim/flightmodel/position/beta")
-
+        
         self.RollError = 0.0
         self.PitchError = 0.0
         self.SlipError = 0.0
-
+        
         self.flightloopCB = self.flightloopCallback
         XPLMRegisterFlightLoopCallback(self, self.flightloopCB, 0.05, 0)
         return self.Name, self.Sig, self.Desc
@@ -120,9 +120,7 @@ class PythonInterface:
 		left = int(lLeft[0]); top= int(lTop[0]); right = int(lRight[0]); bottom = int(lBottom[0])
 		gResult = XPLMDrawTranslucentDarkBox(left, top, right, bottom)
 		colour = 1.0, 1.0, 1.0
-
 		Desc = "Hello World 1"
-
 		gResult = XPLMDrawString(colour, left + 5, top - 20, Desc, 0, xplmFont_Basic)
 		pass
 
