@@ -120,9 +120,19 @@ class PythonInterface:
         gResult = XPLMDrawTranslucentDarkBox(left, top, right, bottom)
         colour = 1.0, 1.0, 1.0
 
-        Desc = "Hello World 1"
+        line1 = "Roll: FD {0:.4f} - Plane {1:.4f}".format(
+            XPLMGetDataf(self.FDRollDR), XPLMGetDataf(self.planeRollDR))
+        line2 = "Pitch: FD {0:.4f} - Plane {1:.4f}".format(
+            XPLMGetDataf(self.FDPitchDR), XPLMGetDataf(self.planePitchDR))
+        line3 = "Ailerons: Left {0:.4f} - {1:.4f} Right".format(
+            XPLMGetDataf(self.ail1LeftDefDR), XPLMGetDataf(self.ail1RightDefDR))
+        line4 = "Tail: Elevator {0:.4f} - {1:.4f} Rudder".format(
+            XPLMGetDataf(self.elev11DefDR), XPLMGetDataf(self.rudd11DefDR))        
 
-        gResult = XPLMDrawString(colour, left + 5, top - 20, Desc, 0, xplmFont_Basic)
+        gResult = XPLMDrawString(colour, left + 5, top - 15, line1, 0, xplmFont_Basic)
+        gResult = XPLMDrawString(colour, left + 5, top - 30, line2, 0, xplmFont_Basic)
+        gResult = XPLMDrawString(colour, left + 5, top - 45, line3, 0, xplmFont_Basic)
+        gResult = XPLMDrawString(colour, left + 5, top - 60, line4, 0, xplmFont_Basic)
         pass
 
     def KeyCallback(self, inWindowID, inKey, inFlags, inVirtualKey, inRefcon, losingFocus):
