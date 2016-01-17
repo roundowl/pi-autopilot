@@ -42,18 +42,16 @@ class PythonInterface:
         self.Name = "Python Autopilot"
         self.Sig = "RoundOwl.Autopilot"
         self.Desc = "Basic implementation of autopilot in python. Use and modify as you wish."
-                
-<<<<<<< HEAD
+
         self.DrawWindowCB = self.DrawWindowCallback
         self.KeyCB = self.KeyCallback
         self.MouseClickCB = self.MouseClickCallback
         self.WindowId = XPLMCreateWindow(self, 50, 600, 300, 400, 1, self.DrawWindowCB, self.KeyCB, self.MouseClickCB, 0)
-=======
-		self.DrawWindowCB = self.DrawWindowCallback
-		self.KeyCB = self.KeyCallback
-		self.MouseClickCB = self.MouseClickCallback
-		self.WindowId = XPLMCreateWindow(self, 50, 600, 300, 400, 1, self.DrawWindowCB, self.KeyCB, self.MouseClickCB, 0)
->>>>>>> origin/devel
+        
+        self.DrawWindowCB = self.DrawWindowCallback
+        self.KeyCB = self.KeyCallback
+        self.MouseClickCB = self.MouseClickCallback
+        self.WindowId = XPLMCreateWindow(self, 50, 600, 300, 400, 1, self.DrawWindowCB, self.KeyCB, self.MouseClickCB, 0)
         
         #----------------
         # Adjust sensitivity here.
@@ -62,10 +60,10 @@ class PythonInterface:
         self.RollSens = 1
         self.PitchSens = 1
         #----------------
-
+        
         self.landingLightsDR = XPLMFindDataRef("sim/cockpit2/switches/landing_lights_on")
         self.elvTrim = XPLMFindDataRef("sim/flightmodel/controls/elv_trim")
-
+        
         self.controlsurfaceOvrDR = XPLMFindDataRef("sim/operation/override/override_control_surfaces")
         self.ail1LeftDefDR = XPLMFindDataRef("sim/flightmodel/controls/wing1l_ail1def")
         self.ail1RightDefDR = XPLMFindDataRef("sim/flightmodel/controls/wing1r_ail1def")
@@ -121,7 +119,6 @@ class PythonInterface:
     #-----
         
     def DrawWindowCallback(self, inWindowID, inRefcon):
-<<<<<<< HEAD
         lLeft = []; lTop = []; lRight = []; lBottom = []
         XPLMGetWindowGeometry(inWindowID, lLeft, lTop, lRight, lBottom)
         left = int(lLeft[0]); top= int(lTop[0]); right = int(lRight[0]); bottom = int(lBottom[0])
@@ -142,16 +139,6 @@ class PythonInterface:
         gResult = XPLMDrawString(colour, left + 5, top - 45, line3, 0, xplmFont_Basic)
         gResult = XPLMDrawString(colour, left + 5, top - 60, line4, 0, xplmFont_Basic)
         pass
-=======
-		lLeft = []; lTop = []; lRight = []; lBottom = []
-		XPLMGetWindowGeometry(inWindowID, lLeft, lTop, lRight, lBottom)
-		left = int(lLeft[0]); top= int(lTop[0]); right = int(lRight[0]); bottom = int(lBottom[0])
-		gResult = XPLMDrawTranslucentDarkBox(left, top, right, bottom)
-		colour = 1.0, 1.0, 1.0
-		Desc = "Hello World 1"
-		gResult = XPLMDrawString(colour, left + 5, top - 20, Desc, 0, xplmFont_Basic)
-		pass
->>>>>>> origin/devel
 
     def KeyCallback(self, inWindowID, inKey, inFlags, inVirtualKey, inRefcon, losingFocus):
         pass
