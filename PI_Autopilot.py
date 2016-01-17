@@ -35,7 +35,6 @@ from XPLMProcessing import *
 from XPLMDataAccess import *
 from XPLMDisplay import *
 from XPLMGraphics import *
-from XPLMMenu import *
 import math
 
 class PythonInterface:
@@ -44,10 +43,10 @@ class PythonInterface:
         self.Sig = "RoundOwl.Autopilot"
         self.Desc = "Basic implementation of autopilot in python. Use and modify as you wish."
                 
-		self.DrawWindowCB = self.DrawWindowCallback
+        self.DrawWindowCB = self.DrawWindowCallback
         self.KeyCB = self.KeyCallback
         self.MouseClickCB = self.MouseClickCallback
-		self.WindowId = XPLMCreateWindow(self, 50, 600, 300, 400, 1, self.DrawWindowCB, self.KeyCB, self.MouseClickCB, 0)
+        self.WindowId = XPLMCreateWindow(self, 50, 600, 300, 400, 1, self.DrawWindowCB, self.KeyCB, self.MouseClickCB, 0)
         
         #----------------
         # Adjust sensitivity here.
@@ -115,22 +114,22 @@ class PythonInterface:
     #-----
         
     def DrawWindowCallback(self, inWindowID, inRefcon):
-		lLeft = []; lTop = []; lRight = []; lBottom = []
-		XPLMGetWindowGeometry(inWindowID, lLeft, lTop, lRight, lBottom)
-		left = int(lLeft[0]); top= int(lTop[0]); right = int(lRight[0]); bottom = int(lBottom[0])
-		gResult = XPLMDrawTranslucentDarkBox(left, top, right, bottom)
-		colour = 1.0, 1.0, 1.0
+        lLeft = []; lTop = []; lRight = []; lBottom = []
+        XPLMGetWindowGeometry(inWindowID, lLeft, lTop, lRight, lBottom)
+        left = int(lLeft[0]); top= int(lTop[0]); right = int(lRight[0]); bottom = int(lBottom[0])
+        gResult = XPLMDrawTranslucentDarkBox(left, top, right, bottom)
+        colour = 1.0, 1.0, 1.0
 
-		Desc = "Hello World 1"
+        Desc = "Hello World 1"
 
-		gResult = XPLMDrawString(colour, left + 5, top - 20, Desc, 0, xplmFont_Basic)
-		pass
+        gResult = XPLMDrawString(colour, left + 5, top - 20, Desc, 0, xplmFont_Basic)
+        pass
 
-	def KeyCallback(self, inWindowID, inKey, inFlags, inVirtualKey, inRefcon, losingFocus):
-		pass
+    def KeyCallback(self, inWindowID, inKey, inFlags, inVirtualKey, inRefcon, losingFocus):
+        pass
 
-	def MouseClickCallback(self, inWindowID, x, y, inMouse, inRefcon):
-		return 1
+    def MouseClickCallback(self, inWindowID, x, y, inMouse, inRefcon):
+        return 1
         
     #-----
     #Next section controls in-flight operation
